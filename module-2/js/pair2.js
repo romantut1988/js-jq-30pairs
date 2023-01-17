@@ -128,8 +128,7 @@ SetValue(arr, 0, 999);
 alert(arr);
 
 
-
-// Свойства и методы массивов
+// Свойства и методы массивов.
 //У массивов в JavaScript есть большое количество встроенных методов.
 // Метод поиска - это indexOf и last-IndexOf
 name_of_array.indexOf(what_to_search[fromIndex])
