@@ -127,3 +127,8 @@ const options = {
 console.log(options.height);
 delete options.height;
 console.log(options)
+
+
+
+
+
