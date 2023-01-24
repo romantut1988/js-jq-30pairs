@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+
+<body onload="alert('body loaded')">
+    <!-- События жизненного цикла -->
+    <!-- Жизненный цикл веб-страницы сопровождается следующими событиями:
+    DOMContentLoaded — браузер полностью загрузил HTML, файлы стилей и скриптов, построил структуру документа;
+    load — браузер загрузил все дополнительные ресурсы — изображения, фреймы; 
+    beforeunload — браузер получил команду закрыть страницу (вкладку); 
+    unload — браузер закрыл страницу (вкладку). -->
+    <!-- Событие "DOMContentLoaded" является одним из наиболее популярных среди событий жизненного цикла. 
+    Оно посылается объекту "document" тогда, когда загружен код HTML, стилевые файлы и скрипты.
+    На момент посылки этого сообщения могут быть еще не загружены изображения или фреймы. 
+    Тем не менее, структура страницы уже определена, то есть в обработчике события все элементы страницы доступны
+    и к ним можно обращаться по их атрибутам ("id", "class", "name" и т.п.) -->
+    <!-- !!!"DOMContentLoaded" - подключается только при помощи команды "addEventListener" -->
+    <script>
+        document.addEventListener("DOMContentLoaded",
+            function () {
+                alert("DOM loaded")
+            }
+        )
+    </script>
+
+    <!-- Событие «load» посылается после загрузки всех дополнительных ресурсов — изображений, 
+    фреймов и т.п. Данное событие относится к объекту "window" и может быть обработано всеми допустимыми вариантами
+    — как при помощи метода "addEventListener", так и указанием атрибутов с префиксом "on" -->
+    <script>
+        window.onload = function () {
+            alert('body loaded')
+        }
+        window.addEventListener("load", function () {
+            alert('body loaded')
+        })
+    </script>
+</body>
+
+</html>
