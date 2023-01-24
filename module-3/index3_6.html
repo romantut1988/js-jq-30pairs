@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+
+    <style>
+        div {
+            background: navy;
+            height: 255px;
+            width: 255px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Пример. Способ программного управления фоновым цветом блока.
+    При щелчке мыши на блок он приводил к изменению его цвета.
+    Цвет должен формироваться случайным образом без какой-либо предварительной закономерности.-->
+    <div id="colorBlock"></div>
+    <script>
+        colorBlock.addEventListener("click", function () {
+            colorBlock.style.backgroundColor = "rgb(" +
+                Math.round(255 * Math.random()) + "," +
+                Math.round(255 * Math.random()) + "," +
+                Math.round(255 * Math.random()) + ")";
+        }) 
+    </script>
+
+</body>
+
+</html>

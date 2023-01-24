@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        div {
+            background: navy;
+            height: 255px;
+            width: 255px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- В качестве следующего примера модифицируем созданную программу.
+         Зададим алгоритм формирования цвета: пусть красный компонент всегда будет равен среднему значению (127),
+         зеленый компонент будет зависеть от координаты «Х» курсора мыши — если курсор находится возле левого края блока,
+         то его значение близко к нулю, если возле правого, то максимальное. 
+         Синий компонент аналогичным образом будет зависеть от координаты «Y» курсора мыши.
+        Обработчик необходимо привязать к другому событию, возникающему при любом перемещении мыши. 
+        Это событие имеет имя "mousemove".-->
+    <div id="colorBlock"></div>
+    <script>
+        colorBlock.addEventListener("mousemove", function (e) {
+            colorBlock.style.backgroundColor = "rgb(127," + e.pageX + "," + e.pageY + ")";
+        })
+    </script>   
+
+</body>
+
+</html>
