@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <!-- !!! Задание -->
+    <!-- Модифицируйте код таким образом, чтобы контекстное меню не вызывалось и за пределами блока. -->
+    <h1>Click on page and press a key</h1>
+    <h2 id="out"></h2>
+    <script>
+        document.body.onkeydown = function (e) {
+            var txt = "";
+            if (e.ctrlKey) txt += "Ctrl — ";
+            if (e.altKey) txt += "Alt — ";
+            if (e.shiftKey) txt += "Shift — ";
+            txt += e.key;
+            out.innerText = txt;
+        }
+
+    </script>
+</body>
+
+</html>
