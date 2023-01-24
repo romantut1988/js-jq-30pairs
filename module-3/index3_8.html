@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+
+    <style>
+        #d1 {
+            border: 1px solid navy;
+            height: 200px;
+            width: 200px;
+        }
+
+        #d2 {
+            background: skyblue;
+            height: 100px;
+            margin: 50px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--События интерфейса пользователя. (User Interface, UI events)
+Возникающих вследствие активности человека, просматривающего нашу веб-страницу (пользователя).
+Можно охарактеризовать эту группу событий «от обратного» — если пользователь отойдет от компьютера,
+то эти события перестанут поступать в программу.  
+Ссылка на таблицу: https://www.w3.org/TR/uievents/ -->
+    <!-- Пример: Для практического анализа описанных процессов сделаем страницу с вложенными блоками и обработчиками для 
+    событий разного типа.  -->
+    <h1>Mouse enter / Mouse over</h1>
+    <div id="d1">
+        <div id="d2"></div>
+    </div>
+    <p>Mouse enter <span id="s1"></span></div>
+    <p>Mouse over <span id="s2"></span></div>
+        <script>
+            d1.onmouseenter = function () {
+                s1.innerText = "d1"
+                console.log("d1.onmouseenter")
+            }
+            d1.onmouseover = function () {
+                s2.innerText = "d1"
+                console.log("d1.onmouseover")
+            }
+            d2.onmouseenter = function () {
+                s1.innerText = "d2"
+                console.log("d2.onmouseenter")
+            }
+            d2.onmouseover = function () {
+                s2.innerText = "d2"
+                console.log("d2.onmouseover")
+            }  
+        </script>
+
+        <!-- !!! Когда курсор мыши пересекает границу внутреннего блока,
+         возникает три события. Событие "onmouseover" приходит дважды — сначала от блока "d2",
+         затем от "d1". В то же время событие "onmouseenter" приходит только один раз от верхнего блока "d2". 
+         Дублирование события «onmouseover» приводит к тому, что текст для сообщения "Mouse over"
+         также устанавливается дважды. Последнее из них стирает предыдущее и в результате на экране
+         остается результат "Mouse over d1", хотя курсор зашел на блок "d2".
+         Об этих особенностях следует помнить при использовании событий разного типа.
+        Детально будем изучать на последующем уроке,
+        после знакомства со структурой документа и компоновкой его элементов. -->
+</body>
+
+</html>
