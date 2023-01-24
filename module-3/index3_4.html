@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+
+    <style>
+        div {
+            background: navy;
+            height: 50px;
+            width: 100px;
+        }
+    </style>
+
+</head>
+
+<body onclick="out.innerText = 'Click detected over: ' + event.target.nodeName
+console.log(event)">
+    <div></div>
+    <p id="out"></p>
+</body>
+
+<!-- Объект event и его свойства -->
+<!-- При обработке системного сообщения и создании программного события браузер формирует специальный объект "event",
+ в котором собираются все данные о событии. -->
+<!-- В то же время, объект "event" имеет свойства, определяемые для всех типов событий.
+ Одним из таких свойств является целевой объект события (target). -->
+<!-- Пример -->
+
+
+</body>
+
+</html>
