@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <style>
+        img {
+            height: auto;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="step.jpg" onload="addMessage('step.jpg load OK')" onerror="addMessage('step.jpg load error')" />
+    <img src="step2.jpg" onload="addMessage('step2.jpg load OK')" onerror="addMessage('step2.jpg load error')" />
+    <p id="txt"></p>
+    <script>
+        function addMessage(msg) {
+            window.txt.innerHTML += msg + "<br/>"
+        }
+    </script>
+</body>
+
+</html>
