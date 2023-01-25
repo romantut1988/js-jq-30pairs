@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <style>
+        body {
+            max-width: 1200px;
+        }
+
+        iframe {
+            border: 1px solid navy;
+            height: 300px;
+            margin: 30px;
+            width: 300px;
+        }
+
+        button {
+            margin: 10px 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Фреймы являются «окнами в окне» — для них, так же как и для основной страницы, создается объект
+    «window» со всеми свойствами и методами, со своей моделью ВОМ. Все фреймы страницы хранятся в специальном
+    объекте-коллекции «window.frames». Количество фреймов можно узнать из величины «window.frames.length». 
+    Доступ к элементам коллекции осуществляется по индексам: «window.frames[0]»,
+    «window.frames[1]» и т.д. При создании фрейма ему может быть задано имя при помощи атрибута «name»: -->
+    <iframe src="about:blank"></iframe>
+    <iframe src="about:blank"></iframe>
+    <iframe src="about:blank" name="frame3"></iframe>
+    <button onclick="window.frames[0].location='https://itstep.org'"> IT Step</button>
+    <button onclick="window.frames[1].location='https://mystat.org'"> Mystat </button>
+    <button onclick="window.frames.frame3.location='https://quiz.itstep.org'"> Quizes </button>
+</body>
+
+</html>
