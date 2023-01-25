@@ -45,12 +45,12 @@
                          вибрирования (если есть)         Включает вибрацию на заданное время
                         
     Некоторые свойства объекта «navigator» рассчитаны на использовании в составе мобильных устройств. 
-    Например, свойство «battery» или метод «getBattery()» (в зависимости от типа браузера)
+    Например, свойство "battery" или метод «getBattery()» (в зависимости от типа браузера)
     позволяет получить данные о состоянии аккумулятора устройства и прогнозированном времени его работы. 
     Пример с батареей ноутбука:-->
     <script>
         // Get the battery API
-        navigator.getBattery().then(function (batteryCharge) {
+         navigator.getBattery().then(function (batteryCharge) {
             if (batteryCharge.charging) {
                 console.log("Battery is charging");
             } else {
