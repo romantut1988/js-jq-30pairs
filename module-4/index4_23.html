@@ -70,7 +70,7 @@
                          phantomElement.style.top = e.pageY - phantomElement.offsetHeight / 2 + 'px';
                          phantomElement.style.zIndex = '-1';
                          var lowerElement = document.elementFromPoint(e.clientX, e.clientY);
-                         phantomElement.style.zIndex = '1';
+                         phantomElement.style.zIndex = '-1';
                          if (lowerElement != null && lowerElement != draggedElement && lowerElement.className.indexOf('item') > -1) {
                               if (lowerElement == window.list.lastChild && e.pageY > (lowerElement.offsetTop + lowerElement.offsetHeight / 2)) {
                                    window.list.removeChild(draggedElement);
@@ -92,7 +92,8 @@
           }
           document.onmouseup = function (e) {
                if (draggedElement) {
-                    draggedElement.style.opacity = '1'; draggedElement = false;
+                    draggedElement.style.opacity = '1';
+                    draggedElement = false;
                }
                if (phantomElement) {
                     document.body.removeChild(phantomElement);

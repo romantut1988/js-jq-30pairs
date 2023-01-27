@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <style>
+          div,
+          p {
+               border: 1px solid navy;
+               display: inline-block;
+               height: 60px;
+               margin: 10px;
+               padding-top: 40px;
+               text-align: center;
+               width: 100px;
+          }
+
+          .c1 {
+               background: #eee;
+          }
+
+          button {
+               margin-left: 25px;
+               margin-top: 30px;
+               width: 90px;
+          }
+     </style>
+</head>
+
+<body>
+     <!-- Поиск элементов -->
+     <!--  сутью задачи является поиск в структуре DOM и объединение найденных элементов, отвечающих заданным требованиям,
+   в программные переменные или массивы -->
+     <!-- Поиск позволяет выделить из дерева DOM некоторую группу элементов, которые отвечают определенным условиям отбора. 
+   Получив сведения о таких группах, можно управлять их свойствами или объединять их значения.Например, обвести красной
+   рамкой все пустые текстовые поля, которые забыл заполнить пользователь, или выделить все те поля,
+   которые необходимы для заполнения.  -->
+
+     <!--  Несмотря на простоту альтернативных методов, стандартом рекомендуется использовать для поиска элемента именно 
+   метод «getElementById». Похожим образом работают такие методы поиска элементов как:
+    «getElementsByName», «getElementsByClassName» и «getElementsByTagName»:
+   Метод «getElementsByName("theName")» производит поиск элементов по их имени, заданных HTML- атрибутом «name="theName"»;
+   Метод «getElementsByClassName("theClass")» ищет элементы по имени стилевого класса, указанного в атрибуте 
+   «class="theClass"»;
+   Метод «getElementsByTagName(«DIV»)» собирает элемен ты по имени HTML тега, которым элементы были созданы (<DIV></DIV>). -->
+
+     <!-- отличие в методах поиска заключается в том, что метод «getElementById» может быть вызван только у объекта 
+   «document», а остальные методы могут вызываться в любом узле дерева элементов DOM. В таком случае поиск будет 
+   осуществляться только в той части дерева, корнем которого является данный узел. -->
+
+     <!-- Наиболее широкие возможности поиска элементов обеспечивает метод «querySelectorAll». В качестве аргумента он\
+   принимает CSS селектор в такой же форме, как и в стилевом определении (или в стилевом файле), например: 
+             Селектор                                           описание 
+                *                            все элементы
+                Р                            элементы с тегом <p>, аналог getElementsByTagName("р")
+                #d1                          элемент с id= "d1", аналог getElementById("d1")
+                .c1                          элементы с классом class="c1", аналог getElementsByClassName("c1") 
+                [name="n1"]                  элементы с атрибутом "name" равным "n1", 
+                                             в данном случае аналог getElementsByName("n1")   
+                [type= "text"]               элементы с атрибутом "type" равным "text"
+                [selected]                   элементы с указанным атрибутом "selected
+                p.c1                         элементы с тегом <p> и классом "c1": <p class="c1">
+                p, div                       элементы с тегом <p> и элементы с тегом <div> (объединение)
+                p div                        элементы с тегом <div> дочерние для элементов с тегом <p>
+                                             (<p><div>element</div></p>)                                       
+      -->
+
+     <!-- Метод «querySelectorAll» также может быть вызван в любом узле дерева DOM, в таком случае он учитывает только
+    поддерево данного узла. Например, если использовать глобальный поиск во всем документе при помощи инструкции:
+               document.querySelectorAll("LI") -->
+
+     <!-- Метод «querySelectorAll» также может быть вызван в любом узле дерева DOM, в таком случае он учитывает только
+     поддерево данного узла. Например, если использовать глобальный поиск во всем документе при помощи инструкции:
+               document.querySelectorAll("LI")  -->
+
+     <!-- Для иллюстрации способов применения различных методов поиска рассмотрим следующий пример. Расположим на странице
+     несколько элементов, создав их различными тегами, зададим им имена и стилевые классы. Для того чтобы иметь возможность 
+     выбирать различные группы из этих элементов, используем для некоторых из них одинаковые теги, для других
+     групп — одинаковые имена или классы (в различных комбинациях). Для запуска разных методов поиска предусмотрим несколько
+     кнопок, наглядность их работы будет заключаться в изменении стилей выбранной группы элементов -->
+
+     <div id="d1" class="c1" name="n1">d1, c1, n1</div>
+     <div id="d2" class="c2" name="n1">d2, c2, n1</div>
+     <div id="d3" class="c1 c2">d3, c1 c2</div>
+     <p id="p1" class="c1">p1, c1</p>
+     <p id="p2" class="c2" name="n1">p2, c2, n1</p>
+     <br>
+     <button onclick="selD1()">id = d1</button>
+     <button onclick="selC1()">class = c1</button>
+     <button onclick="selP()">tag = P</button>
+     <button onclick="selN1()">name = n1</button>
+     <button onclick="clr()">Clear</button>
+     <script>
+          function selD1() {
+               var elem = document.getElementById("d1");
+               elem.style.backgroundColor = "#cfc";
+          }
+          function selC1() {
+               var elems = document.getElementsByClassName("c1");
+               for (elem of elems) elem.style.backgroundColor = "#fcc";
+          }
+          function selP() {
+               var elems = document.getElementsByTagName("p");
+               for (elem of elems) elem.style.backgroundColor = "#ccf";
+          }
+          function selN1() {
+               var elems = document.getElementsByName("n1");
+               for (elem of elems) elem.style.backgroundColor = "#bef";
+          }
+          function clr() {
+               var elems = document.querySelectorAll("div,p");
+               for (elem of elems) elem.style.backgroundColor = "#eee";
+          } 
+     </script>
+</body>
+
+
+</html>
