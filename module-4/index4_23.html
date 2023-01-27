@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <style>
+          body {
+               position: relative;
+          }
+
+          .item,
+          .phantom {
+               height: 30px;
+               width: 300px;
+          }
+
+          .phantom {
+               position: absolute;
+          }
+     </style>
+</head>
+
+<body>
+     <!-- Задача. Разработать список, в котором можно менять порядок элементов при помощи технологии Drag-and-Drop, 
+     т.е. перетягивать элементы списка мышкой и вставлять их в нужное место списка.Когда пользователь нажимает на
+    некоторый пункт списка, он не должен исчезнуть из списка при перетягивании.
+    Иначе возникнет сбой нумерации списка и скачок его размера. Также может быть не совсем понятно,
+    в какое место списка элемент вставится, если его отпустить. 
+       Сделаем так: 
+     При нажатии кнопки мыши и начале перетягивания элемент в списке получит некоторое выделение для того,
+     чтобы понятно было какой элемент является активным. Из списка он не исчезнет, чем сохранит нумерацию и размеры 
+     всего списка.
+     Вместе с курсором мыши будет двигаться копия активного элемента, создавая видимость процесса перетягивания.
+     При смене позиции курсора мыши выделенный (активный) элемент списка будет менять свое место в списке, следуя за
+     курсором-->
+
+     <ol id='list'>
+          <li class='item' style='background-color:gold'> </li>
+          <li class='item' style='background-color:red'> </li>
+          <li class='item' style='background-color:green'> </li>
+          <li class='item' style='background-color:blue'> </li>
+     </ol>
+
+     <script>
+          var draggedElement = false;
+          var phantomElement = false;
+          document.onmousedown = function (e) {
+               e.preventDefault();
+               var clickedElement = document.elementFromPoint(e.clientX, e.clientY);
+               if (clickedElement.className.indexOf('item') > -1) {
+                    clickedElement.style.opacity = '0.5';
+                    draggedElement = clickedElement;
+               }
+          }
+          document.onmousemove = function (e) {
+               if (draggedElement) {
+                    if (!phantomElement) {
+                         phantomElement = document.createElement('div');
+                         phantomElement.style.backgroundColor = draggedElement.style.backgroundColor;
+                         phantomElement.style.left = e.pageX - draggedElement.offsetWidth / 2 + 'px';
+                         phantomElement.style.top = e.pageY - draggedElement.offsetHeight / 2 + 'px';
+                         phantomElement.className = "phantom";
+                         document.body.appendChild(phantomElement);
+                    }
+                    else {
+                         phantomElement.style.left = e.pageX - phantomElement.offsetWidth / 2 + 'px';
+                         phantomElement.style.top = e.pageY - phantomElement.offsetHeight / 2 + 'px';
+                         phantomElement.style.zIndex = '-1';
+                         var lowerElement = document.elementFromPoint(e.clientX, e.clientY);
+                         phantomElement.style.zIndex = '1';
+                         if (lowerElement != null && lowerElement != draggedElement && lowerElement.className.indexOf('item') > -1) {
+                              if (lowerElement == window.list.lastChild && e.pageY > (lowerElement.offsetTop + lowerElement.offsetHeight / 2)) {
+                                   window.list.removeChild(draggedElement);
+                                   window.list.appendChild(draggedElement);
+                              } else {
+                                   if (e.pageY > (lowerElement.offsetTop + lowerElement.offsetHeight / 2)) {
+                                        if (lowerElement.previousSibling == draggedElement) {
+                                             window.list.removeChild(draggedElement);
+                                             window.list.insertBefore(draggedElement, lowerElement.nextSibling);
+                                        }
+                                   } else {
+                                        window.list.removeChild(draggedElement);
+                                        window.list.insertBefore(draggedElement, lowerElement);
+                                   }
+                              }
+                         }
+                    }
+               }
+          }
+          document.onmouseup = function (e) {
+               if (draggedElement) {
+                    draggedElement.style.opacity = '1'; draggedElement = false;
+               }
+               if (phantomElement) {
+                    document.body.removeChild(phantomElement);
+                    phantomElement = false;
+               }
+          } 
+     </script>
+</body>
+
+</html>
