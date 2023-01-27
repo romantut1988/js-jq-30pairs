@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <!-- Объекты модели DOM. Иерархия узлов -->
+    <!-- В отношениях между узлами модели можно выделить три уровня:
+    Родительский узел (parentNode) позволяет двигаться по «дереву» структуры вверх -->
+    <!-- Соседние узлы (siblings) отвечают за элементы одного уровня иерархии. 
+    Переход между такими узлами обеспечивается свойствами «previousSibling» и «nextSibling» -->
+    <!-- Дочерние узлы представляют движение по дереву вниз. Для каждого узла существует коллекция дочерних узлов
+    (childNodes). Обход этой коллекции возможен двумя способами:
+     1) при помощи индексов коллекции, наподобие childNodes[1],
+     либо 2) при помощи указателей первого и последнего дочернего элемента (firstChild и lastChild),
+    а также переходов к последующему или предыдущему соседнему узлу (previousSibling и nextSibling)  -->
+    <ul>
+        <li>first element</li>
+        <li> second element
+            <span>child Node 0</span>
+            <a>child node 1</a>
+            <p> child node 2 </p>
+        </li>
+        <li>third element</li>
+    </ul>
+</body>
+
+</html>
