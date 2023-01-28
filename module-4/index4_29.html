@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+
+<body onkeypress="keyHandler(event)">
+    <!-- Создадим некоторый текст и расставим между его словами элементы «checkbox» (галочки). Будем считать,
+что область выделения будет задаваться двумя отмеченными элементами. После завершения выделения текст необходимо будет 
+пометить, задав ему синий фоновый цвет -->
+
+    <!-- Метод объекта                                           Описание 
+         «Range»
+    setStart(elem, offset)                           Устанавливает маркер начала в элементе
+                                                     «elem» со смещением «offset» от его начала
+    setEnd(elem, offset)                             Устанавливает маркер конца в элементе «elem»
+                                                     со смещением «offset» от его начала
+    setStartBefore(elem)                             Устанавливает маркер начала перед элементом «elem»
+    setStartAfter(elem)                              Устанавливает маркер начала после элемента «elem»
+    setEndBefore(elem)                               Устанавливает маркер конца перед элементом «elem»
+    setEndAfter(elem)                                Устанавливает маркер конца после элемента «elem»
+    selectAllChildren(elem)                          Устанавливает маркеры начала и конца вокруг элемента «elem» 
+    addRange(range)                                  Устанавливает маркеры согласно диапазону «range» 
+    removeAllRanges()                                Очищает данные о маркерах -->
+
+    <input type="checkbox" />
+    Mark <input type="checkbox" />
+    selection <input type="checkbox" />
+    ranges <input type="checkbox" />
+    by <input type="checkbox" />
+    checking<input type="checkbox" />
+    boxes<input type="checkbox" />
+    between<input type="checkbox" />
+    the<input type="checkbox" />
+    words<input type="checkbox" />
+    <br>
+    <input type="button" value="Done" onclick="makeSelection()" />
+    <p id="out"></p>
+    <script>
+        function makeSelection() {
+            var checkedBoxes = document.querySelectorAll("[type='checkbox']:checked");
+            if (checkedBoxes.length != 2) {
+                out.innerHTML = "You should check exactly 2 boxes:start and finish of selection";
+                return;
+            }
+            var range = document.createRange();
+            range.setStartAfter(checkedBoxes[0]);
+            range.setEndBefore(checkedBoxes[1]);
+            var span = document.createElement("SPAN");
+            span.style.backgroundColor = 'aqua';
+            range.surroundContents(span);
+            out.innerHTML = "Selected text:<br>" + range.toString();
+        }   
+    </script>
+</body>
+
+
+</html>
