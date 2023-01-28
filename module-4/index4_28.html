@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+
+<body onkeypress="keyHandler(event)">
+    <!-- Выделения по нажатию комбинации «ctrl-Enter» -->
+    <h1>Text selection demo</h1>
+    <p>If you find some mistakes on pagge
+        <br> <i>selectt them and press ctrl-Enter</i>
+    </p>
+    <p id="out"></p>
+    <script>
+        function keyHandler(e) {
+            if (e.ctrlKey && (e.key == "Enter" || e.code == "Enter")) {
+                var sel = document.getSelection();
+                var msg = "";
+                msg += "Selection starts at " + sel.anchorOffset + "symbol of node <br>";
+                msg += "<b>" + sel.anchorNode.data + "</b><br>";
+                msg += "Selection ends at " + sel.focusOffset + "symbol of node <br>";
+                msg += "<b>" + sel.focusNode.data + "</b><br>";
+                msg += "selected string is: <b>" + sel.toString() + "</b>";
+                out.innerHTML = msg;
+            }
+        }   
+    </script>
+    <!-- Сохраните изменения, откройте файл в браузере или обновите открытую ранее страницу. Также выделите два слова,
+    содержащие ошибки, только в этот раз нажмите комбинацию клавиш «Сtrl-Enter» на клавиатуре. В нижней части страницы
+    сформируется сообщение о параметрах выделения текста: -->
+
+</body>
+
+
+</html>
