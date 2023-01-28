@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>JavaScript</title>
+     <link rel="stylesheet" href="./25exemple/style.css" />
+</head>
+
+<body>
+     <!-- Управление ссылками: объекты Link и Links -->
+     <!-- Рассмотрим особенности работы с ссылками различного типа на следующем примере. Поставим себе две задачи:
+    1. Реализовать смену стилей страницы при помощи воздействия на ссылку <link>, подключающую стилевой файл;
+    2. Собрать сведения обо всех ссылках, созданных тегом <a>, находящихся в документе -->
+     <ul>
+          <li><a href="index4_20.html">Drag-and-Drop basics</a></li>
+          <li><a href="index4_21.html">Adding DOM nodes</a></li>
+          <li><a href="index4_22.html">Adding and removing DOM nodes</a></li>
+          <li><a href="index4_23.html">Drag-and-Drop list ordering</a></li>
+     </ul>
+     <input type="button" value="Get links" onclick="getLinks()" /><br />
+     Apply new style:<br />
+     <input type="radio" name="styler" onclick="changeStyle(1)" /> style1 <br />
+     <input type="radio" name="styler" onclick="changeStyle(2)" /> style2 <br />
+     <script>
+          function getLinks() {
+               var str = "";
+               var links = document.links;
+               for (link of links)
+                    str += link.innerText + "(" + link.href + ")\n";
+               alert(str);
+          }
+
+          function changeStyle(num) {
+               var styleLink = document.getElementsByTagName("LINK")[0];
+               document.head.removeChild(styleLink);
+               styleLink = document.createElement("LINK");
+               styleLink.href = "./25exemple/style" + num + ".css";
+               styleLink.rel = "stylesheet";
+               document.head.appendChild(styleLink);
+          }
+
+     </script>
+</body>
+
+</html>
