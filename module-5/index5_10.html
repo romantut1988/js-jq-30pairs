@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+</head>
+
+<body>
+  <!-- Перехват события формы:  -->
+  <!-- Первый способ — перехват события «onsubmit» формы. Сообщение об этом событии генерируется, когда пользователь
+  нажимает кнопку отправки формы или клавишу «Enter» при заполнении элемента формы.  -->
+
+
+  <form onsubmit="return checkForm(event)" method="GET" id="poll"></form>
+  <script>
+    function checkForm(event) {
+      var nameText = document.getElementById("name").value;
+      if (nameText.length < 1) return false;
+      return true;
+    } 
+  </script>
+
+  <!-- В некоторых случаях, для разделения работы HTML- дизайнеров и JavaScript-программистов, обработчики событий
+  подключаются не в HTML тегах, а программнымспособом, при помощи метода «addEventListener» нужного элемента -->
+  <!-- Для упреждения автоматической отсылки необходимо воспользоваться методом «preventDefault» аргумента «event»,
+  передающегося в функцию «checkForm». 
+ Поскольку стандартная обработка события отменена, для отправки формы необходимо явно вызвать ее метод «submit()». -->
+  <form onsubmit="return checkForm(event)" method="GET" id="poll"></form>
+  <script>
+    function checkForm(event) {
+      event.preventDefault()
+      var nameText = document.getElementById("name").value;
+      if (nameText.length > 0) document.getElementById("poll").submit();
+    }
+  </script>
+
+
+
+  <!--  !!!   Второй способ отменить автоматическую отправку формы состоит в отказе от элемента типа «submit» и
+  использовании обычной кнопки. В таком случае событие «onsubmit» от нее не генерируется, а вызывается непосредственный
+  обработчик события нажатия кнопки. Внутри этого обработчика, в случае успешной проверки, форма отправляется 
+  принудительным вызовом ее метода «submit()», как и в предыдущем примере. -->
+  <input type="button" onclick="checkButtonClick()" value="Send" />
+  <script>
+    function checkButtonClick() {
+      var nameText = document.getElementById("name").value;
+      if (nameText.length > 0) document.getElementById("poll").submit();
+    } 
+  </script>
+
+  <!-- Как показывает практика, в некоторых случаях, если на форме нет элемента «submit», то его функцию берет на себя
+  обычная кнопка. В таком случае форма будет отсылается в любом случае после нажатия кнопки, независимо от результата 
+  ее работы, т.к. перехвачено событие «click», а не «submit». Для упреждения автоматической отсылки формы можно пойти 
+  двумя путями: 
+  1) указать в определении формы, либо -->
+  <form onsubmit="return false">
+    <input type="text" id="name" />
+    <input type="button" onclick="checkButtonClick()" value="Send" />
+  </form>
+
+  <!-- 2) вынести определение кнопки за форму, то есть написать ее HTML код после закрытого тега формы </form> -->
+  <form>
+    <input type="text" id="name" />
+  </form>
+  <input type="button" onclick="checkButtonClick()" value="Send" />
+
+
+
+
+  <!-- Итог: 
+  В первом случае автоматическая отправка формы будет прекращена возвратом всегда ложного значения «false».
+  Во втором случае кнопка не будет принадлежать форме и ее нажатие не будет иметь никакого отношения к событиям формы.
+  Программный вызов метода «submit» в проверочной функции сам-по-себе не генерирует сообщение «onsubmit». Это означает,
+  что форма отправляется без дополнительного вызова перехватчика этого события «checkForm» (если он есть). Вся проверка 
+  достоверности формы должна быть проведена в одной функции, а не разбита на две — одна для кнопки, другая для 
+  перехваченного события  «onsubmit». Также, при замене элемента «submit» на кнопку не будет срабатывать отправка формы 
+  по нажатию «Enter». Хорошо это или плохо — решать разработчику, но помнить об этом необходимо. -->
+</body>
+
+</html>
