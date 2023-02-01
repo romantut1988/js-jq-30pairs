@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <style>
+        
+        #regForm b {
+            display: inline-block;
+            padding-top: 5px;
+            width: 100px;
+        }
+
+        #regForm input[type="submit"] {
+            margin: 15px 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Проверка достоверности данных формы -->
+    <!-- В данном разделе рассмотрим несколько практических примеров применения регулярных выражений для проверки 
+достоверности данных форм.  -->
+
+    <!-- Задача: Создать форму-анкету, предназначенную для добавления нового пользователя в некоторую систему. Введем поля 
+для наиболее популярных данных — реального имени, логина/пароля, телефона и электронной почты. -->
+
+    <form method="GET" id="regForm" onsubmit="return checkForm()">
+        <b>First name:</b>
+        <input type="text" id="name1" name="name1" required />
+        <br />
+        <b>Last name:</b>
+        <input type="text" id="name2" name="name2" required />
+        <br />
+        <b>Login:</b>
+        <input type="text" id="login" name="login" required />
+        <br />
+        <b>Password:</b>
+        <input type="password" id="pas1" name="pass" required />
+        <br />
+        <b>Confirm password:</b>
+        <input type="password" id="pas2" required />
+        <br />
+        <b>Email:</b>
+        <input type="email" id="email" name="email" required />
+        <br />
+        <b>Phone number:</b>
+        <input type="phone" id="phone" name="phone" required />
+        <br />
+        <b>Code:</b>
+        <input type="number" id="code" name="code" required />
+        <br />
+        <b></b>
+        <label>
+            <input type="checkbox" name="accept" required />
+            I accept the rules
+        </label>
+        <br />
+        <input type="submit" value="Register" />
+    </form>
+
+    <script>
+        function checkForm() {
+            alert("Analyzing...");
+            return false;
+        }    
+    </script>
+</body>
+
+</html>
