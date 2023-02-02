@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <!-- Ошибки при использовании JSON -->
+    <!-- При написании JSON ошибки появятся в таких ситуациях:
+    ■ Когда имя свойства введено без кавычек {property:"value"}
+    ■ Когда значение у которого должны быть кавычки, написано без них {"property" : value}.
+    ■ Когда используются одинарные или обратные кавычки вместо двойных  {‘property’ : `value`}. 
+    ■ Когда используется ключевое слово new {property : new Date(2023,7,15)}.
+    -->
+
+
+    <!-- Метод toJSON() -->
+    <!-- Метод toJSON() может быть методом любого объекта. Он позволяет определить собственное представление объекта в 
+JSON. Таким образом, можно заменить стандартное поведение сериализации на собственное. Функция stringify() будет 
+вызывать метод объекта toJSON() и использовать возвращаемое значение, вместо того чтобы сериализовать переданный объект. 
+Применяется, если объект JavaScript может содержать некорректные значения, которые нарушают сериализацию-->
+    <!-- Пример: -->
+    <script>
+        let models = {
+            name: "BMW",
+            autopilot: undefined,
+        }
+        let cars = {
+            color: "Black",
+            date: new Date(2023, 7, 21),
+            models
+        }
+        let carsJSON = JSON.stringify(cars);
+        alert(carsJSON);
+    </script>
+
+    <script>
+        let model = {
+            name: "BMW",
+            autopilot: undefined,
+            toJSON() {
+                let jsonStr = '{ "name": "${this.name}","autopilot": ';
+                if (this.autopilot === undefined) {
+                    jsonStr += '"Not"}'
+                }
+                else {
+                    jsonStr += '"${this.autopilot}"}'
+                }
+                return jsonStr;
+            }
+        }
+        let car = {
+            color: "Black",
+            date: new Date(2023, 7, 21),
+            model
+        }
+        let carJSON = JSON.stringify(car);
+        alert(carJSON);
+    </script>
+</body>
+
+</html>

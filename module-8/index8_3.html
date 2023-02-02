@@ -59,6 +59,130 @@ JSON предоставляет две функции:
         let emptyStr = JSON.stringify(badExample);
         alert(emptyStr);
     </script>
+
+    <!-- Важно знать, что в сериализованном объекте не должно быть циклических ссылок. 
+         Циклическая ссылка — это ссылка, которая ссылается на другой объект, который в свою очередь ссылается на первый. -->
+
+    <!-- Рассмотрим пример: -->
+
+    <script>
+        let Kate = { name: "Kate" }
+        let Dev = { name: "Dev" }
+        Kate.parent = Dev;
+        Dev.child = Kate;
+        let falily = JSON.stringify(Dev);
+        console.log(falily);
+    </script>
+
+
+    <!-- Функция stringify() может передать еще два необязательных параметра: replacer и space.
+Replacer — параметр, который позволяет влиять на сериализацию объекта. Значением параметра может быть функция, массив 
+или null, если параметр не нужен.
+Функция в параметре replace используется, если нам необходимо определить значения, которые не будут включаться в 
+сериализацию по определенному условию. Функция вызывается для каждого значения и может принимать два параметра: ключ и 
+значение, которые и будут проверены, и, если они проходят проверку, то возвращается проверяемое значение, если нет, то 
+undefined -->
+    <!-- Пример: -->
+    <script>
+        let personn = {
+            firstName: "Andrey",
+            lastName: "Ivanov",
+            age: 20,
+            isStudent: true,
+            сontactInfo: {
+                "phone": "098-556-33-41",
+                "email": "AndreyIvanov@gmail.com"
+            },
+            disciplines: [
+                "Programming",
+                "Machine engineering",
+                "English"
+            ]
+        }
+        function checkAge(key, value) {
+            if (key === "age" && value >= 18) {
+                return undefined;
+            }
+            return value;
+        }
+        let jsonPerson2 = JSON.stringify(person, checkAge);
+        alert(jsonPerson2);
+    </script>
+
+    <!-- Если вторым аргументом в функцию JSON.stringify(value, replacer) передать массив, то значения массива будут 
+сопоставлены со свойствами передаваемого объекта и если они совпадут то будут включены в преобразование, если нет, то 
+пропущены. -->
+    <script>
+        let jsonPerson3 = JSON.stringify(person, ["firstName", "lastName"]);
+        alert(jsonPerson3);
+    </script>
+
+    <!-- И третий параметр в функции JSON.stringify(value, replacer, space) — это space, который принимает строку или 
+число и позволяет придать более читаемый вид строке JSON, добавляя отступы. -->
+    <!-- Пример: stringify(person, null) не очень читаемая -->
+    <script>
+        let persons = {
+            firstName: "Andrey",
+            lastName: "Ivanov",
+            age: 20,
+            isStudent: true,
+            сontactInfo: {
+                "phone": "098-556-33-41",
+                "email": "AndreyIvanov@gmail.com"
+            },
+            disciplines: [
+                "Programming", "Machine engineering", "English"
+            ]
+        }
+        alert(JSON.stringify(person, null));
+    </script>
+
+    <!-- В этом примере все точно так же, за исключением параметра space — stringify(person, null, 2). -->
+    <script>
+        let personi = {
+            firstName: "Andrey",
+            lastName: "Ivanov",
+            age: 20,
+            isStudent: true,
+            сontactInfo: {
+                "phone": "098-556-33-41",
+                "email": "AndreyIvanov@gmail.com"
+            },
+            disciplines: [
+                "Programming", "Machine engineering", "English"
+            ]
+        }
+        alert(JSON.stringify(person, null, 2));
+    </script>
+
+    <!-- Функция parse() -->
+    <!-- Чтобы строку JSON преобразовать в объект, нужно выполнить над ней метод парсинга. Парсинг, в данном случае, 
+означает процесс десериализации строки в объект. Функция parse() — функция, которая десериализирует JSON строку и 
+возвращает объект JavaScript. -->
+    <!-- Синтаксис: JSON.parse(str, [reviver]) -->
+    <!-- Пример:  -->
+    <script>
+        personStr =
+            '{"firstName": "Andrey", "lastName": "Ivanov", "age": 20, "isStudent": true,"сontactInfo": {"phone": "098-556-33-41", "email": "AndreyIvanov@gmail.com"},"disciplines": ["Programming","Machine engineering","English"] }'
+
+        let perso = JSON.parse(personStr);
+        alert(person.firstName);
+        alert(person.сontactInfo.phone);                                        
+    </script>
+
+
+    <!-- Напишем функцию, которая проверяет , студент ли этот человек, и, если да, исключает это свойство.  -->
+    <script>
+        personStr = '{"firstName": "Andrey","lastName": "Ivanov","age": 20,"isStudent": true,"сontactInfo": {"phone": "098-556-33-41","email": "AndreyIvanov@gmail.com"},"disciplines": ["Programming","Machine engineering","English"] }'
+        function CheckIsStudent(key, value) {
+            if (key === "isStudent" && value == true) {
+                return undefined;
+            }
+            return value;
+        }
+        let person2 = JSON.parse(personStr, CheckIsStudent);
+        alert(person2.isStudent);
+    </script>
 </body>
 
 </html>
