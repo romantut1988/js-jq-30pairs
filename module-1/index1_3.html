@@ -1,18 +1,38 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Тег NOSCRIPT</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <noscript>
+        <style>
+            #msg {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: #bbb;
+                text-align: center;
+                padding-top: 49vh;
+            }
+        </style>
+    </noscript>
+    <style>
+        * {
+            font-size: 30px;
+        }
+    </style>
 </head>
 
 <body>
-    <noscript>
-        <!-- anchor linking to external file -->
-        <a href="http://www.mozilla.com/">External Link</a>
-    </noscript>
-    <p>Rocks!</p>
+    <div id="msg">Allow scripts to use this page </div>
+    <script>
+        window.msg.innerHTML = "JavaScript enabled. All right.";
+    </script>
+
 </body>
 
 </html>
