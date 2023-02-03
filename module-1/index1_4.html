@@ -1,25 +1,21 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-<head> </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
 
 <body>
     <script>
-        var num = +prompt("Final number:");
-        alert(stringWithNumbers(num));
-        function stringWithNumbers(n) {
-            if (n == 1) return "1";
-            return stringWithNumbers(n - 1) + ", " + n;
+        function show5Blocks() {
+            for (i = 1; i <= 5; i++)
+                document.write("<h2> Header " + i + "</h2>");
         }
+        show5Blocks();        
     </script>
-
-
-    <!-- Основу программы составляет функция «stringWithNumbers»,которая формирует строку, содержащую ряд чисел.По канонам
-    рекурсии,она содержит «выход» с возвратом конкретного значения 1 и повторный вызов себя с уменьшенным значением
-    аргумента.К полученному значению дописывается текущее число, и результат возвращается в точку вызова.
-    Взаимодействие с пользователем заключается в запросе граничного числа и выводе итогового результата.Обратите
-    внимание,что функция «stringWithNumbers» описана после того,как она используется в команде «alert».Это снова
-    демонстрирует действие поднятия определений, только на этот раз для функций -->
 </body>
 
 </html>
