@@ -32,7 +32,7 @@ for (let key in optionTest) {
 }
 
 let counter = 0;
-for (let key in optionTest) { 
+for (let key in optionTest) {
     if (typeof (optionTest[key]) === 'object') {
         for (let t in optionTest[key]) {
             console.log(`Свойство ${t} имеет значение ${optionTest[key][t]}`);
@@ -46,4 +46,4 @@ for (let key in optionTest) {
 console.log(counter);
 
 // Получаем массив всех ключей.
-console.log(Object.keys(optionTest).length)
+console.log(Object.keys(optionTest).length);

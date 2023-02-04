@@ -11,8 +11,8 @@ var student = new Object();
 // Добавляем свойство в объект используя обычный
 // синтаксис массивов 
 // ["ключ"] 
-student["Name"] = "Vasya"; // вместо двойных кавычек можно использовать одинарные
-student['Age'] = 23;
+student["Name"] = "Vasya"; 
+student['Age'] = 23;        // вместо двойных кавычек можно использовать одинарные
 alert(student["Name"]);
 alert(student['Age']);
 
@@ -113,20 +113,6 @@ for (var tempProperty in rect) {
     alert(rect[tempProperty]);
 }
 
-// Примеры объектов {} {} {}...
-const options = {
-    name: 'project',
-    with: '1200',
-    height: '1200',
-    colors: {
-        border: 'red',
-        bg: 'yellow'
-    }
-}
-// получаем одно из.. значений 
-console.log(options.height);
-delete options.height;
-console.log(options)
 
 
 
