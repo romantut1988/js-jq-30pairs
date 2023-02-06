@@ -23,6 +23,10 @@ arr2[99] = 300;
 console.log(arr2.length);
 console.log(arr2);
 
+// вызов массива по индексу.
+const arrI = [3, 5, 'я строка', 9];
+console.log(arrI[2]);
+
 
 // перебор массива через метод forEach 
 // callback function
@@ -31,4 +35,17 @@ arr.forEach(function (item, i, arr3) {
     console.log(`${i}: ${item} с массивом внутри ${arr3}`)
 });
 
+
+// метод создания массива 2 способ const myArray = new Array.
+const myArray = new Array("Egor", 300, false,);
+console.log(myArray[0]);
+console.log(myArray.length);
+
+const myArray2 = new Array("Egor", 300, false,);
+// сравним массивы.
+myArray === myArray2;
+
+// дальше  
+const myArray3 = myArray
+myArray === myArray3
 
