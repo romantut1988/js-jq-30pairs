@@ -25,6 +25,7 @@ firm.Address = 'Somewhere street 5';
 alert(firm.Name);
 alert(firm.Address);
 
+
 //Удаление свойств
 /*
 Добавленные к объекту свойства можно удалить.
@@ -51,6 +52,7 @@ delete cat["Age"];
 alert(cat.Name);
 alert(cat.Age);
 
+
 // Проверка существования свойства внутри объекта
 // создали объект
 var obj = {};
@@ -63,6 +65,7 @@ if ("Age" in obj) {
     alert("Not exists");
 }
 
+
 // Ещё один способ создания объекта со свойствами
 // Третий вариант)))
 // !!!Пример
@@ -74,11 +77,12 @@ var student = {
 };
 /*  То же самое, что и выше
   var student = {};
-    student.name = "Daria";
-     student.lastName = "Kislicina";
-       student.age = 23;
-        */
+  student.name = "Daria";
+  student.lastName = "Kislicina";
+  student.age = 23;
+    */
 alert(student.age);
+
 
 // !!!Еще вариант.При создании объекта можно внутрь вставить другой объект.
 // создали объект студента

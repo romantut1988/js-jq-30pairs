@@ -1,18 +1,19 @@
 // Примеры:
 
-// const obj = new Object(); структура не очень и запись большая    
+// const obj = new Object(); структура не очень и запись большая.    
 
 const optionTest = {
     name: 'test',
     width: 800,
-    height: 800,
+    height: 700,
     colors: {
-        border: 'black',
-        bg: 'red'
+        border: 'red',
+        bg: 'yellow'
     }
 };
 
 console.log(optionTest.name);
+console.log(optionTest['width']);
 
 // delete optionTest.name;
 console.log(optionTest);
@@ -31,6 +32,9 @@ for (let key in optionTest) {
     }
 }
 
+
+
+
 let counter = 0;
 for (let key in optionTest) {
     if (typeof (optionTest[key]) === 'object') {
@@ -47,3 +51,16 @@ console.log(counter);
 
 // Получаем массив всех ключей.
 console.log(Object.keys(optionTest).length);
+
+
+// еще пример
+const actions = {
+    name: 'Roman',
+    id: 7
+}
+const newActn = {
+    ...actions,
+    place: "Russia, Moskow"
+}
+console.log(newActn);
+console.log(Object.entries(newActn));
