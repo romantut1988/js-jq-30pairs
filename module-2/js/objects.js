@@ -15,7 +15,7 @@ const optionTest = {
 console.log(optionTest.name);
 console.log(optionTest['width']);
 
-// delete optionTest.name;
+delete optionTest.name;
 console.log(optionTest);
 
 for (let key in optionTest) {
@@ -25,7 +25,7 @@ for (let key in optionTest) {
 for (let key in optionTest) {
     if (typeof (optionTest[key]) === 'object') {
         for (let t in optionTest[key]) {
-            console.log(`Свойство ${t} имеет значение ${optionTest[key][t]}`);
+            console.log(`Свойство ${t} имеет эти значения ${optionTest[key][t]}`);
         }
     } else {
         console.log(`Свойство ${key} имеет значение ${optionTest[key]}`);
@@ -39,7 +39,7 @@ let counter = 0;
 for (let key in optionTest) {
     if (typeof (optionTest[key]) === 'object') {
         for (let t in optionTest[key]) {
-            console.log(`Свойство ${t} имеет значение ${optionTest[key][t]}`);
+            console.log(`Свойство ${t} имеет эти значения ${optionTest[key][t]}`);
             counter++;
         }
     } else {

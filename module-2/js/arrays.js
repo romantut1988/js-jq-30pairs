@@ -49,3 +49,9 @@ myArray === myArray2;
 const myArray3 = myArray
 myArray === myArray3
 
+
+// Задача: Дан массив arr: Выведите с его помощью слово 'черный'.
+var arrTask = {
+    'ru': ['черный', 'красный', 'зеленый'],
+    'en': ['black', 'red', 'green'],
+}
