@@ -12,6 +12,8 @@ const optionTest = {
     }
 };
 
+
+
 console.log(optionTest.name);
 console.log(optionTest['width']);
 

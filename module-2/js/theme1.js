@@ -1,4 +1,4 @@
-// Объекты - это некоторая конкретная реализация какой-то сущности.                                           
+            // Объекты - это некоторая конкретная реализация какой-то сущности.                                           
 // создаем пустой объект
 // мы используем ключевое слово new для создания объекта 
 var obj = new Object();
@@ -17,12 +17,12 @@ alert(student['Age']);
 
 //!!! При втором способе вы добавляете свойства в объект, как будто вы уже ранее указывали их.
 // создаем пустой объект
-var firm = {};
+var myName = {}; 
 // создаём свойство внутри объекта
-firm.Name = "Star Inc";
-firm.Address = 'Somewhere street 5';
-alert(firm.Name);
-alert(firm.Address);
+myName.Name = "Star Inc";
+myName.Address = 'Somewhere street 5';
+alert(myName.Name);
+alert(myName.Address);
 
 // !хранить в качестве ключа строку, содержащую с пробелами
 var dog = {};
@@ -78,7 +78,7 @@ if ("Age" in obj) {
 var student = {
     name: "Daria",
     lastName: "Kislicina",
-    age: 23
+    age: 23,
 };
 /*  То же самое, что и выше
   var student = {};
@@ -91,7 +91,7 @@ alert(student.age);
 
 // !!!Еще вариант.При создании объекта можно внутрь вставить другой объект.
 // создали объект студента
-var student = {
+var student = {   
     name: "Daria",
     lastName: "Kislicina",
     age: 23,

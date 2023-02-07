@@ -1,4 +1,4 @@
-// Задержки и интервалы
+   // Задержки и интервалы.
 // Периодический вызов функций. (Таймер).
 // Функция setTimeout используется для установки таймера.
 // Простой пример функции setTimeout
@@ -51,7 +51,8 @@ var counter = 0; function IntervalFunc() {
 
 //  Альтернативой использованию setInterval является рекурсивный вызов setTimer.
 var id = setTimeout(TimeOutFunc, 2000);
-var counter = 0; function TimeOutFunc() {
+var counter = 0;
+function TimeOutFunc() {
     // если таймер сработал уже трижды  
     // останавливаем процесс 
     if (counter == 3) {

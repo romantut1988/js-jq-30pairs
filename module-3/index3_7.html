@@ -28,7 +28,9 @@
          Синий компонент аналогичным образом будет зависеть от координаты «Y» курсора мыши.
         Обработчик необходимо привязать к другому событию, возникающему при любом перемещении мыши. 
         Это событие имеет имя "mousemove".-->
+
     <div id="colorBlock"></div>
+    
     <script>
         colorBlock.addEventListener("mousemove", function (e) {
             colorBlock.style.backgroundColor = "rgb(127," + e.pageX + "," + e.pageY + ")";
