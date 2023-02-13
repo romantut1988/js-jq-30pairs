@@ -66,3 +66,14 @@ const newActn = {
 }
 console.log(newActn);
 console.log(Object.entries(newActn));
+
+
+// add example ...
+const pers = {
+    name: 'Jack',
+    age: 56
+}
+pers.age = 33
+pers.isTypical = false
+console.log(pers.age)
+console.log(pers.isTypical)
