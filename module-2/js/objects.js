@@ -3,7 +3,7 @@
 // const obj = new Object(); структура не очень и запись большая.    
 
 const optionTest = {
-    name: 'test',
+    name: 'tests',
     width: 800,
     height: 700,
     colors: {
@@ -11,7 +11,6 @@ const optionTest = {
         bg: 'yellow'
     }
 };
-
 
 
 console.log(optionTest.name);
@@ -33,8 +32,6 @@ for (let key in optionTest) {
         console.log(`Свойство ${key} имеет значение ${optionTest[key]}`);
     }
 }
-
-
 
 
 let counter = 0;
