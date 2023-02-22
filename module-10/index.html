@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <script>
+        //             ECMAScript 6
+
+        var globalVar = 1;
+        function setGlobalVar() {
+            globalVar = 2;
+        }
+        setGlobalVar();
+        var globalVar = 3;
+        console.log(globalVar);
+    </script>
 </body>
+
 </html>
