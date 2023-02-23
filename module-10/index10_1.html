@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //                                                 ECMAScript 6
+        // Переменные
+        // Область видимости переменной это — часть программы, в которой можно использовать эту переменную, т.е. область видимости определяет доступность переменной.
+        var globalVar = 1;
+        function setGlobalVar() {
+            globalVar = 2;
+        }
+        setGlobalVar();
+        var globalVar = 3;
+        console.log(globalVar);
+
+        function welcome() {
+            var greeting = "Hello";
+            if (true) {
+                var greeting = "Hi";
+                console.log(greeting);
+
+            }
+            console.log(greeting);
+        } welcome();
+
+        function printLocalVar() {
+            var localVar = 1;
+            console.log(localVar);
+        }
+        printLocalVar();
+        console.log(localVar);
+
+
+
+        // Отличие let от var в области видимости.
+        function welcome() {
+            var greeting = "Hello";
+            if (true) {
+                var greeting = "Hi";
+                console.log(greeting);
+            }
+            console.log(greeting);
+        }
+        welcome();
+
+
+
+        // Мы не можем объявить две одинаковые переменные.
+        let globalLet = 1;
+        function setGlobalVar() {
+            globalLet = 2;
+        }
+        setGlobalVar();
+        let globalLet = 3;
+        console.log('Переменная globalLet = ${globalLet} ');
+
+
+
+        //  Всплытие или как еще называют hoisting  — это механизм, который поднимает переменные и объявление функций в начало своей области видимости.
+        console.log(greeting);
+        var greeting = "Hello";
+        console.log(greeting
+
+        var greeting = undefined;
+        console.log(greeting);
+        greeting = "Hello";
+        console.log(greeting);
+
+
+
+        // Использовать переменную до ее объявления не совсем логично!
+        console.log(greeting);
+        let greeting = "Hello";
+        console.log(greeting);
+
+
+
+        // Переменная const(константа).! Значения переменных, объявленных с помощью const, нельзя изменить.
+        const PI = 3.14;
+        PI = 3;
+
+        let catLucky = {
+            name: "Lucky;",
+            age: 3
+        }
+        const cat = catLucky;
+        cat.age = 4;
+        console.log(cat);
+
+        let catJessica = {
+            name: "Jessica",
+            age: 3
+        };
+        let dogScoobyDoo = {
+            name: "Scooby Doo",
+            age: 5
+        }
+        let arrPets = [catJessica, dogScoobyDoo];
+        const myPets = arrPets;
+        console.log(myPets);
+        let parrotPolly = {
+            name: "Polly",
+            age: 1
+        }
+        myPets.push(parrotPolly);
+        console.log(myPets);
+    </script>
+</body>
+
+</html>
