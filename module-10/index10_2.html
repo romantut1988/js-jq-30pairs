@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+
+<body>
+
+    <script>
+        //      Тип данных Symbol
+        // Тип данных Symbol или как его еще называют — символ — представляет собой уникальный идентификатор.  
+        // Примитивные типы не имеют свойств и методов для работы. Также, такие значения являются неизменяемыми (иммутабельными).
+
+        // Пример
+        let name1 = Symbol("name");
+        let name2 = Symbol("name");
+        console.log(name1 === name2);
+
+        // Пример
+        let valueId = Symbol("id");
+        console.log(valueId);
+
+        // Символы можно использовать в качестве ключей для свойств объекта. Они позволяют создавать скрытые свойства объекта, к которым нельзя обратиться обычным способом.
+        // пример
+        let user = {
+            login: "user1",
+            [Symbol("data")]: "This is important user data"
+        }
+        console.log(user.data);
+
+        // если перебрать свойства объекта в цикле for in:
+        let user = {
+            login: "user1",
+            [Symbol("data")]: "This is important user data"
+        }
+        for (const key in user) {
+            console.log(key);
+        }
+
+        // Однако получить значение таких свойств все же можно.
+        let userData = Symbol("data");
+        let user = {
+            login: "user1",
+            userData: "This is important user data"
+        }
+        console.log(user.userData);
+
+        //  Если добавлять свойство к стороннему объекту может возникнуть ситуация. Пример:
+        let user = {
+            id: 1,
+            login: "user1",
+        }
+        console.log(user.id);
+        user.id = 2;
+        console.log(user.id);
+
+        // Одним из решений этой проблемы является добавление нижнего подчеркивания. Пример:
+        let user = {
+            id: 1,
+            login: "user1",
+        }
+        user._id = 2;
+        console.log(user.id);
+        console.log(user._id);
+
+        // Другим способом создания символа является вызов функции Symbol.for(). Главным отличием этого способа создания от создания через Symbol() заключается в том что, функция Symbol.for() сначала проверяет существует ли символ с таким же описанием, что и новый символ и если он существует, то возвращается этот символ, а если нет создается новый.
+        // Пример:
+        let name = Symbol.for("name");
+        let name2 = Symbol.for("name");
+        console.log(name === name2);
+    </script>
+
+</body>
+
+</html>
